@@ -1,6 +1,6 @@
 import { useCallback, useMemo, useState } from 'react';
 import { Container, Row, Col, Button, Stack, Form } from 'react-bootstrap';
-import data from 'json/data.json';
+import data from '../json/data.json';
 import { Question } from '@/components/Question';
 
 export default function Home() {

@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Form } from 'react-bootstrap';
 import { FormProps } from 'types/Form';
-import { validateMin, validateMax, validatePresent, validateLettersOnly, validateEmail } from 'utils/validation';
+import { validateMin, validateMax, validatePresent, validateLettersOnly, validateEmail } from '../../utils/validation';
 import { ValidationMessage } from '../common/ValidationError';
 
 export function InputEmail({

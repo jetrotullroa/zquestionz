@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { Col, Form, Row } from 'react-bootstrap';
 import { FormProps } from 'types/Form';
+import { randomInt } from '../../utils/common';
 
 export function Radio({ id, type, options }: FormProps) {
 	const currentOptions = options || [];
-	const [checkedIndex, setCheckedIndex] = useState(Math.floor(Math.random() * currentOptions.length - 1));
+	const [checkedIndex, setCheckedIndex] = useState(randomInt(0, currentOptions.length - 1));
   const formType = type === 'radio' ? 'radio' : 'checkbox';
   return (
     <Row>

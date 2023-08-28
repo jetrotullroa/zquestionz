@@ -1,9 +1,9 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Form } from 'react-bootstrap';
 import { FormProps } from 'types/Form';
-import { validateMaxNumber, validatePresent, validateMinNumber } from 'utils/validation';
+import { validateMaxNumber, validatePresent, validateMinNumber } from '../../utils/validation';
 import { ValidationMessage } from '../common/ValidationError';
-import { randomInt } from 'utils/common';
+import { randomInt } from '../../utils/common';
 
 export function InputNumber({ id, type, placeholder, required, maximumRequired, minimumRequired }: FormProps) {
   const firstRender = useRef(true);

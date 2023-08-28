@@ -3,4 +3,7 @@ export interface FormProps {
   type: string;
 	placeholder?: string;
 	options?: string[];
+	required: boolean;
+	minimumRequired: number;
+	maximumRequired: number;
 }

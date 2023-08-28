@@ -3,102 +3,108 @@
 exports[`renders homepage unchanged 1`] = `
 <div>
   <div
-    class="container"
+    class="d-flex flex-column align-items-center justify-content-center vh-100 w-100 container"
   >
-    <main>
-      <h1
-        class="title"
-      >
-        Welcome to 
-        <a
-          href="https://nextjs.org"
-        >
-          Next.js!
-        </a>
-      </h1>
-      <p
-        class="description"
-      >
-        Get started by editing 
-        <code>
-          pages/index.js
-        </code>
-      </p>
-      <div
-        class="grid"
-      >
-        <a
-          class="card"
-          href="https://nextjs.org/docs"
-        >
-          <h3>
-            Documentation →
-          </h3>
-          <p>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-        <a
-          class="card"
-          href="https://nextjs.org/learn"
-        >
-          <h3>
-            Learn →
-          </h3>
-          <p>
-            Learn about Next.js in an interactive course with quizzes!
-          </p>
-        </a>
-        <a
-          class="card"
-          href="https://github.com/vercel/next.js/tree/canary/examples"
-        >
-          <h3>
-            Examples →
-          </h3>
-          <p>
-            Discover and deploy boilerplate example Next.js projects.
-          </p>
-        </a>
-        <a
-          class="card"
-          href="https://vercel.com/new"
-        >
-          <h3>
-            Deploy →
-          </h3>
-          <p>
-            Instantly deploy your Next.js site to a public URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-    <footer
-      class="footer"
+    <div
+      class="mb-5 row"
     >
-      <a
-        href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-        rel="noopener noreferrer"
-        target="_blank"
+      <div
+        class="col"
       >
-        Powered by
-         
-        <span
-          class="logo"
+        <h1
+          class="font-grey-600 fs-1 fw-bolder"
         >
-          <img
-            alt="Vercel Logo"
-            data-nimg="1"
-            decoding="async"
-            height="16"
-            loading="lazy"
-            src="/vercel.svg"
-            style="color: transparent;"
-            width="72"
-          />
-        </span>
-      </a>
-    </footer>
+          D&D Character Sheet
+        </h1>
+      </div>
+    </div>
+    <div
+      class="mb-5 row"
+    >
+      <div
+        class="col"
+      >
+        <h3
+          class="text-center"
+        >
+          What's your alias?
+           
+          <span
+            class="text-muted fs-4"
+          >
+            (
+            Required
+            )
+          </span>
+        </h3>
+      </div>
+    </div>
+    <div
+      class="w-100 row"
+    >
+      <div
+        class="col"
+      >
+        <input
+          aria-describedby="1HelpBlock"
+          class="form-control form-control-lg"
+          id="question-1"
+          placeholder="Your name here"
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      class="w-100 mt-5 row"
+    >
+      <div
+        class="d-flex align-items-center justify-content-around w-100 col"
+      >
+        <div
+          class="row"
+        >
+          <div
+            class="col"
+          >
+            <button
+              class="px-4 py-2 rounded btn btn-dark btn-lg"
+              disabled=""
+              type="button"
+            >
+              Back
+            </button>
+          </div>
+        </div>
+        <div
+          class="row"
+        >
+          <div
+            class="col"
+          >
+            <h2>
+              1
+               / 
+              10
+            </h2>
+          </div>
+        </div>
+        <div
+          class="row"
+        >
+          <div
+            class="col"
+          >
+            <button
+              class="px-4 py-2 rounded btn btn-dark btn-lg"
+              type="button"
+            >
+              Next
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;
