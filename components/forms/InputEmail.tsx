@@ -1,7 +1,13 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Form } from 'react-bootstrap';
 import { FormProps } from 'types/Form';
-import { validateMin, validateMax, validatePresent, validateLettersOnly, validateEmail } from '../../utils/validation';
+import {
+  validateMin,
+  validateMax,
+  validatePresent,
+  validateLettersOnly,
+  validateEmail
+} from '../../utils/validation';
 import { ValidationMessage } from '../common/ValidationError';
 
 export function InputEmail({
@@ -10,23 +16,36 @@ export function InputEmail({
   placeholder,
   minimumRequired,
   maximumRequired,
-	required
+  required,
+  pageValid,
+  setPageValid,
+  answers,
+  setAnswers
 }: FormProps) {
   const firstRender = useRef(true);
   const [value, setValue] = useState('');
 
   const validationMessages = useMemo(() => {
     return [
-			validateEmail(value),
+      validatePresent(value),
+      validateEmail(value),
       validateMin(value, minimumRequired),
       validateMax(value, maximumRequired)
     ].filter(Boolean);
   }, [value]);
 
-	const isNotValid = required && validationMessages.length !== 0
-
+  const isNotValid = required && validationMessages.length !== 0;
 
   useEffect(() => {
+    isNotValid ? setPageValid(false) : setPageValid(true);
+    if (!firstRender.current) {
+      setAnswers(
+        (prevState: Record<string, string | number | boolean | string[]>) => ({
+          ...prevState,
+          [id]: value
+        })
+      );
+    }
     firstRender.current = false;
   }, [value]);
 
@@ -42,7 +61,7 @@ export function InputEmail({
         onChange={(e) => setValue(e.target.value)}
         value={value}
       />
-      {!firstRender.current && isNotValid && (
+      {!firstRender.current && value !== '' && isNotValid && (
         <ValidationMessage message={validationMessages[0]} />
       )}
     </>

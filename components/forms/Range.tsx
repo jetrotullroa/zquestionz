@@ -1,10 +1,30 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Form } from 'react-bootstrap';
 import { FormProps } from 'types/Form';
 import { randomInt } from '../../utils/common';
 
-export function Range({ id, type, minimumRequired, maximumRequired }: FormProps) {
-  const [value, setValue] = useState(randomInt(minimumRequired, maximumRequired));
+export function Range({
+  id,
+  type,
+  minimumRequired,
+  maximumRequired,
+  setPageValid,
+  setAnswers
+}: FormProps) {
+  const [value, setValue] = useState(
+    randomInt(minimumRequired, maximumRequired)
+  );
+
+  useEffect(() => {
+    setPageValid(true);
+    setAnswers(
+      (prevState: Record<string, string | number | boolean | string[]>) => ({
+        ...prevState,
+        [id]: value
+      })
+    );
+  }, []);
+
   return (
     <>
       <div className="text-center fs-3 fw-bold">{value}</div>

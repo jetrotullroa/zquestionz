@@ -12,9 +12,19 @@ import { InputEmail } from './forms/InputEmail';
 
 interface QuestionProps {
   activeQuestion: Question;
+  pageValid: boolean;
+  setPageValid: CallableFunction;
+  answers: Record<string, string | number | boolean | string[]>;
+  setAnswers: CallableFunction;
 }
 
-export function Question({ activeQuestion }: QuestionProps) {
+export function Question({
+  activeQuestion,
+  pageValid,
+  setPageValid,
+  answers,
+  setAnswers
+}: QuestionProps) {
   const {
     required,
     id,
@@ -34,26 +44,41 @@ export function Question({ activeQuestion }: QuestionProps) {
     maximumRequired,
     minimumRequired,
     required,
-    options
+    options,
+    pageValid,
+    setPageValid,
+    answers,
+    setAnswers
   };
-  if (type === 'number') {
-    renderForm = <InputNumber {...formProps} />;
-  } else if (type === 'email') {
-    renderForm = <InputEmail {...formProps} />;
-  } else if (type === 'textarea') {
-    renderForm = <Textarea {...formProps} />;
-  } else if (type === 'select') {
-    renderForm = <Select {...formProps} />;
-  } else if (type === 'switch') {
-    renderForm = <Switch {...formProps} />;
-  } else if (type === 'range') {
-    renderForm = <Range {...formProps} />;
-  } else if (type === 'checkbox') {
-    renderForm = <Checkbox {...formProps} />;
-  } else if (type === 'radio') {
-    renderForm = <Radio {...formProps} />;
-  } else {
-    renderForm = <Input {...formProps} />;
+
+  switch (type) {
+    case 'radio':
+      renderForm = <Radio {...formProps} />;
+      break;
+    case 'select':
+      renderForm = <Select {...formProps} />;
+      break;
+    case 'textarea':
+      renderForm = <Textarea {...formProps} />;
+      break;
+    case 'switch':
+      renderForm = <Switch {...formProps} />;
+      break;
+    case 'range':
+      renderForm = <Range {...formProps} />;
+      break;
+    case 'checkbox':
+      renderForm = <Checkbox {...formProps} />;
+      break;
+    case 'number':
+      renderForm = <InputNumber {...formProps} />;
+      break;
+    case 'email':
+      renderForm = <InputEmail {...formProps} />;
+      break;
+    default:
+      renderForm = <Input {...formProps} />;
+      break;
   }
 
   return (

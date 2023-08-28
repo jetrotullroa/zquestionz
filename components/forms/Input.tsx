@@ -1,7 +1,12 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Form } from 'react-bootstrap';
 import { FormProps } from 'types/Form';
-import { validateMin, validateMax, validatePresent, validateLettersOnly } from '../../utils/validation';
+import {
+  validateMin,
+  validateMax,
+  validatePresent,
+  validateLettersOnly
+} from '../../utils/validation';
 import { ValidationMessage } from '../common/ValidationError';
 
 export function Input({
@@ -10,7 +15,11 @@ export function Input({
   placeholder,
   minimumRequired,
   maximumRequired,
-	required
+  required,
+  pageValid,
+  setPageValid,
+  answers,
+  setAnswers
 }: FormProps) {
   const firstRender = useRef(true);
   const [value, setValue] = useState('');
@@ -18,16 +27,26 @@ export function Input({
   const validationMessages = useMemo(() => {
     return [
       validatePresent(value),
-			validateLettersOnly(value),
+      validateLettersOnly(value),
       validateMin(value, minimumRequired),
       validateMax(value, maximumRequired)
     ].filter(Boolean);
   }, [value]);
 
-	const isNotValid = required && validationMessages.length !== 0
-
+  const isNotValid = required && validationMessages.length !== 0;
 
   useEffect(() => {
+    isNotValid ? setPageValid(false) : setPageValid(true);
+    if (!firstRender.current) {
+      setAnswers(
+        (prevState: Record<string, string | number | boolean | string[]>) => ({
+          ...prevState,
+          [id]: value
+        })
+      );
+    } else {
+      setValue((answers[id] as string | undefined) || '');
+    }
     firstRender.current = false;
   }, [value]);
 
