@@ -1,33 +1,30 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Form } from 'react-bootstrap';
 import { FormProps } from 'types/Form';
-import { validateMin, validateMax, validatePresent, validateLettersOnly } from '../../utils/validation';
+import { validateMaxNumber, validatePresent, validateMinNumber } from '../../utils/validation';
 import { ValidationMessage } from '../common/ValidationError';
+import { randomInt } from '../../utils/common';
 
-export function Input({
-  id,
-  type,
-  placeholder,
-  minimumRequired,
-  maximumRequired,
-	required
-}: FormProps) {
+export function InputNumber({ id, type, placeholder, required, maximumRequired, minimumRequired }: FormProps) {
   const firstRender = useRef(true);
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState(randomInt(minimumRequired, maximumRequired));
 
   const validationMessages = useMemo(() => {
     return [
-      validatePresent(value),
-			validateLettersOnly(value),
-      validateMin(value, minimumRequired),
-      validateMax(value, maximumRequired)
+      validateMinNumber(value, minimumRequired),
+      validateMaxNumber(value, maximumRequired)
     ].filter(Boolean);
   }, [value]);
 
 	const isNotValid = required && validationMessages.length !== 0
 
-
   useEffect(() => {
+		if (firstRender.current && value > 999) {
+			setValue(999)
+		}
+		if (firstRender.current && value < 0) {
+			setValue(0)
+		}
     firstRender.current = false;
   }, [value]);
 
@@ -37,11 +34,13 @@ export function Input({
         placeholder={placeholder}
         size="lg"
         type={type}
+        min={0}
+        max={999}
         id={`question-${id}`}
         aria-describedby={`${id}HelpBlock`}
         autoFocus
-        onChange={(e) => setValue(e.target.value)}
-        value={value}
+        onChange={(e) => setValue(parseInt(e.target.value, 10))}
+				value={value}
       />
       {!firstRender.current && isNotValid && (
         <ValidationMessage message={validationMessages[0]} />
