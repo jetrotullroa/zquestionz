@@ -1,6 +1,7 @@
 import { ChangeEvent, ReactEventHandler, useEffect, useState } from 'react';
 import { Col, Form, Row } from 'react-bootstrap';
 import { FormProps } from 'types/Form';
+import { randomInt } from 'utils/common';
 
 export function Checkbox({
   id,
@@ -8,9 +9,14 @@ export function Checkbox({
   options,
   minimumRequired,
   maximumRequired,
-  required
+  required,
+  setPageValid,
+  setAnswers
 }: FormProps) {
-  const [values, setValues] = useState<string[]>(['Persuasion']);
+  const currentOptions = options || [];
+  const [values, setValues] = useState<string[]>([
+    currentOptions[randomInt(0, currentOptions.length - 1)]
+  ]);
 
   const onCheckboxChange = (checked: boolean, option: string) => {
     if (checked) {
@@ -27,6 +33,17 @@ export function Checkbox({
     return !checked;
   };
 
+  useEffect(() => {
+    setPageValid(true);
+
+    setAnswers(
+      (prevState: Record<string, string | number | boolean | string[]>) => ({
+        ...prevState,
+        [id]: values
+      })
+    );
+  }, [values]);
+
   return (
     <>
       {required && (
@@ -35,7 +52,7 @@ export function Checkbox({
         </i>
       )}
       <Row>
-        {(options || []).map((option) => (
+        {currentOptions.map((option) => (
           <Col xs={6} md={3} className="fs-4">
             <Form.Check
               id={`question-${id}`}
