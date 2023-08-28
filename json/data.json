@@ -4,6 +4,7 @@
     {
       "id": "1",
       "question": "What's your alias?",
+      "placeholder": "Your name here",
       "type": "text",
       "options": [],
       "multiple": false,
@@ -14,6 +15,7 @@
     {
       "id": "2",
       "question": "How many winters have you been alive?",
+      "placeholder": "Your age here",
       "type": "number",
       "options": [],
       "multiple": false,
@@ -23,6 +25,7 @@
     },
     {
       "id": "3",
+      "placeholder": "Describe yourself here",
       "question": "What is your story?",
       "type": "textarea",
       "options": [],
@@ -34,6 +37,7 @@
     {
       "id": "4",
       "question": "Where are you from?",
+      "placeholder": "Your birthplace",
       "type": "select",
       "options": [
         "Waterdeep",
@@ -51,6 +55,7 @@
     {
       "id": "5",
       "question": "What is your race?",
+      "placeholder": "What is your race?",
       "type": "radio",
       "options": ["Human", "Elf", "Half-Orc", "Half-Elf", "Gnome", "Goblin"],
       "multiple": false,
@@ -61,6 +66,7 @@
     {
       "id": "6",
       "question": "What is your class?",
+      "placeholder": "What is your class?",
       "type": "radio",
       "options": ["Wizard", "Paladin", "Cleric", "Fighter", "Rogue", "Bard"],
       "multiple": false,
@@ -71,6 +77,7 @@
     {
       "id": "7",
       "question": "What are your expertise?",
+      "placeholder": "What can you bring to the table?",
       "type": "checkbox",
       "options": [
         "Pickpocket",
@@ -78,7 +85,7 @@
         "Talk to Animals",
         "High Jump",
         "Intimidation",
-        "Persuation",
+        "Persuasion",
         "Deception",
         "Play musical instrument",
         "Read scrolls",
@@ -98,6 +105,7 @@
     {
       "id": "8",
       "question": "How many gold are you going to bring on this quest?",
+      "placeholder": "Show me the money!",
       "type": "range",
       "options": [],
       "multiple": true,
@@ -108,7 +116,8 @@
     {
       "id": "9",
       "question": "Is this your first time to play?",
-      "type": "boolean",
+      "placeholder": "Are you a newbie?",
+      "type": "switch",
       "options": [],
       "multiple": false,
       "required": true,
@@ -118,6 +127,7 @@
     {
       "id": "10",
       "question": "Where can we send our owl to inform you if you are selected?",
+      "placeholder": "Your email address here",
       "type": "email",
       "options": [],
       "multiple": false,
