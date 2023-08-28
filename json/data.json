@@ -1,0 +1,129 @@
+{
+  "title": "D&D Character Sheet",
+  "questionnaire": [
+    {
+      "id": "1",
+      "question": "What's your alias?",
+      "type": "text",
+      "options": [],
+      "multiple": false,
+      "required": true,
+      "minimumRequired": 2,
+      "maximumRequired": 24
+    },
+    {
+      "id": "2",
+      "question": "How many winters have you been alive?",
+      "type": "number",
+      "options": [],
+      "multiple": false,
+      "required": true,
+      "minimumRequired": 16,
+      "maximumRequired": 999
+    },
+    {
+      "id": "3",
+      "question": "What is your story?",
+      "type": "textarea",
+      "options": [],
+      "multiple": false,
+      "required": false,
+      "minimumRequired": 0,
+      "maximumRequired": 999
+    },
+    {
+      "id": "4",
+      "question": "Where are you from?",
+      "type": "select",
+      "options": [
+        "Waterdeep",
+        "Baldur's Gate",
+        "Enchanted Forest",
+        "Underdark",
+        "Eberron",
+        "Icewind Dale"
+      ],
+      "multiple": false,
+      "required": true,
+      "minimumRequired": 1,
+      "maximumRequired": 1
+    },
+    {
+      "id": "5",
+      "question": "What is your race?",
+      "type": "radio",
+      "options": ["Human", "Elf", "Half-Orc", "Half-Elf", "Gnome", "Goblin"],
+      "multiple": false,
+      "required": true,
+      "minimumRequired": 1,
+      "maximumRequired": 1
+    },
+    {
+      "id": "6",
+      "question": "What is your class?",
+      "type": "radio",
+      "options": ["Wizard", "Paladin", "Cleric", "Fighter", "Rogue", "Bard"],
+      "multiple": false,
+      "required": true,
+      "minimumRequired": 1,
+      "maximumRequired": 1
+    },
+    {
+      "id": "7",
+      "question": "What are your expertise?",
+      "type": "checkbox",
+      "options": [
+        "Pickpocket",
+        "Stealth",
+        "Talk to Animals",
+        "High Jump",
+        "Intimidation",
+        "Persuation",
+        "Deception",
+        "Play musical instrument",
+        "Read scrolls",
+        "Polyglot",
+        "Wall Climbing",
+        "Sharpshooter",
+        "Heavy Armor Mastery",
+        "Shield Mastery",
+        "Great Weapon Mastery",
+        "Healer"
+      ],
+      "multiple": true,
+      "required": true,
+      "minimumRequired": 1,
+      "maximumRequired": 4
+    },
+    {
+      "id": "8",
+      "question": "How many gold are you going to bring on this quest?",
+      "type": "range",
+      "options": [],
+      "multiple": true,
+      "required": true,
+      "minimumRequired": 0,
+      "maximumRequired": 999
+    },
+    {
+      "id": "9",
+      "question": "Is this your first time to play?",
+      "type": "boolean",
+      "options": [],
+      "multiple": false,
+      "required": true,
+      "minimumRequired": 4,
+      "maximumRequired": 5
+    },
+    {
+      "id": "10",
+      "question": "Where can we send our owl to inform you if you are selected?",
+      "type": "email",
+      "options": [],
+      "multiple": false,
+      "required": true,
+      "minimumRequired": 3,
+      "maximumRequired": 21
+    }
+  ]
+}
